@@ -1,3 +1,7 @@
+body {
+    background-color: #f0f0f0;
+}
+
 .top {
     background-image: url('img/lobby_view.png');
     background-size: cover;
@@ -23,10 +27,75 @@
 
 .top > a {
     text-decoration: none;
-    background-color: #42D408;
+    background-color: #47bf0f;
     padding: 20px;
     padding-left: 25px;
     padding-right: 25px;
     font-size: 19px;
     color: #FAFAFA
 }
+
+.normal .information {
+    display: flex; /* Set the container to use flexbox */
+    flex-direction: column; /* Display items in a column */
+    align-items: center; /* Center items horizontally within the container */
+    text-align: center; /* Center the content horizontally */
+}
+
+.normal .information ul {
+    list-style-type: none;
+}
+
+.normal .information ul li {
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+.normal .information ul li p {
+    margin: 0; /* Remove default margin for <p> elements */
+}
+
+.footer {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer p {
+    margin: 0;
+  }
+  
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-links li {
+    margin-right: 30px;
+  }
+  
+  .footer-links li:last-child {
+    margin-right: 0;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: #858585;
+    transition: all 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: #FAFAFA;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+    }
+    .footer-links {
+      margin-top: 10px;
+    }
+  }
