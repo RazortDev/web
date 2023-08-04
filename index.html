@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Razort Mc - Home</title>
+    <title>Login page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,14 +25,14 @@
                 <a class="nav-link" href="/soon" style="color: #FAFAFA; padding-right: 30px">Rank</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="https://minecraftpocket-servers.com/server/124866/vote/" style="color: #FAFAFA; padding-right: 30px">Vote</a>
+                <a class="nav-link" href="https://minecraftpocket-servers.com/server/124866/vote" style="color: #FAFAFA; padding-right: 30px">Vote</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="/soon" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #FAFAFA; padding-right: 30px">
                   Contact
                 </a>
                 <ul class="dropdown-menu bg-light">
-                  <li><a class="dropdown-item" href="/soon" style="color: #0a0a0a">WhatsApp</a></li>
+                  <li><a class="dropdown-item" href="https://chat.whatsapp.com/GSjH0CIV0oHGLJnWuzMmfd" style="color: #0a0a0a">WhatsApp</a></li>
                   <li><a class="dropdown-item" href="/soon" style="color: #0a0a0a">Instagram</a></li>
                   <li><a class="dropdown-item" href="/soon" style="color: #0a0a0a">Discord</a></li>
                 </ul>
@@ -44,7 +44,7 @@
     <div class="top">
         <h1 class="fw-bold">Razort MC</h1>
         <h2 class="fw-bolder">Beautiful And Fun Server From Indonesia</h2>
-        <a class="fw-bolder rounded-pill" href="minecraft://?addExternalServer=Razort%20Mc|play.razortmc.com:19132">Join Server</a>
+        <a class="fw-bolder rounded-pill">Join Server</a>
     </div>
     <div class="normal">
         <div class="information">
@@ -52,10 +52,10 @@
             <ul>
               <li><p class="fw-semibold">IP: <span>play.razortmc.com</span></p></li>
               <li><p class="fw-semibold">Port: <span>19132</span></p></li>
-              <li><p class="fw-semibold">Version: <span>1.20.12</span></p></li>
-              <li><p class="fw-semibold">Online: <span>Always Online</span></p></li>
+              <li><p class="fw-semibold">Version: <span>1.20.10+</span></p></li>
+              <li><p class="fw-semibold">Online: <span id="on-off">...</span></p></li>
               <li><p class="fw-semibold">Games: <span>Survival Eco, One Block, Sky Block (Soon)</span></p></li>
-              <li><p class="fw-semibold">Player: <span>Coming Soon</span></p></li>
+              <li><p class="fw-semibold">Player: <span id="player">...</span></p></li>
             </ul>
         </div>
         <div class="information" style="padding-bottom: 50px;">
@@ -66,20 +66,34 @@
             <li><p class="fw-semibold">Admin: <span>Kosong</span></p></li>
             <li><p class="fw-semibold">Helper: <span>Kosong</span></p></li>
             <li><p class="fw-semibold">Police: <span>Kosong</span></p></li>
+            <li><p class="fw-semibold">Player: <span>Coming Soon</span></p></li>
           </ul>
       </div>
     </div>
     <footer class="footer bg-dark text-light">
       <div class="footer-content">
-        <p>Company Name &copy; 2023. All rights reserved.</p>
-        <ul class="footer-links pt-3 fw-semibold">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+        <p>RazortMc &copy; 2023.</p>
       </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script>
+        function onLoad() {
+          fetch(`https://api.mcsrvstat.us/bedrock/2/razortmc.com`)
+            .then(response => response.json())
+            .then(data => {
+              if (data.online) {
+                document.getElementById('on-off').innerHTML = "Onine";
+                document.getElementById('player').innerHTML = data.players.online;
+              } else {
+                document.getElementById('on-off').textContent = 'Offline';
+              }
+            })
+            .catch(error => {
+              console.error('Gagal menghubungi server:', error);
+            });
+        }
+
+        window.addEventListener('load', onLoad);
+    </script>
 </body>
 </html>
